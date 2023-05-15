@@ -4,7 +4,7 @@ import '../model/kategori_barang_model.dart';
 import 'package:http/http.dart' as http;
 
 class BarangController {
-  final String apiUrl = "http://10.0.2.2:8000/api";
+  final String apiUrl = "http://10.0.2.2:8000/api/";
 
   Future<List<KategoriBarangModel>> getKategoriBarang() async {
     var result = await http.get(Uri.parse("${apiUrl}barang/getAllKB/"));
