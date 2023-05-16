@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import '../../controller/kategori_barang_controller.dart';
 import '../../model/kategori_barang_model.dart';
 import 'add_kategori_barang.dart';
+import 'edit_kategori_barang.dart';
 
 class KategoriBarang extends StatefulWidget {
   const KategoriBarang({super.key});
@@ -42,11 +43,25 @@ class _KategoriBarangState extends State<KategoriBarang> {
           itemCount: listKategoriBarang.length,
           itemBuilder: (context, index) {
             return Card(
-              child: ListTile(
-                  title: Text(listKategoriBarang[index].nama),
-                  trailing: IconButton(
-                      onPressed: () {}, icon: const Icon(Icons.edit))),
-            );
+                child: ListTile(
+                    title: Text(listKategoriBarang[index].nama),
+                    trailing: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => EditKategoriBarang(
+                                            oldname:
+                                                listKategoriBarang[index].nama,
+                                            id: listKategoriBarang[index].id,
+                                          )));
+                            },
+                            icon: const Icon(Icons.edit_outlined)),
+                      ],
+                    )));
           },
         ),
       ),
