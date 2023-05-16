@@ -9,8 +9,10 @@ import '../../model/kategori_barang_model.dart';
 import 'kategori_barang.dart';
 
 class EditKategoriBarang extends StatefulWidget {
+  final int? id;
+  final String? oldname;
 
-  const EditKategoriBarang({super.key});
+  const EditKategoriBarang({super.key, this.id, this.oldname});
 
   @override
   State<EditKategoriBarang> createState() => _EditKategoriBarangState();
@@ -40,6 +42,7 @@ class _EditKategoriBarangState extends State<EditKategoriBarang> {
               onChanged: (value) {
                 nama = value;
               },
+              initialValue: widget.oldname,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Nama Kategori is required';
@@ -52,6 +55,8 @@ class _EditKategoriBarangState extends State<EditKategoriBarang> {
               onPressed: () {
                 if (formkey.currentState!.validate()) {
                   formkey.currentState!.save();
+                  kategoriBarangController.updateKategoriBarang(
+                      widget.id!, nama!);
                   Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
