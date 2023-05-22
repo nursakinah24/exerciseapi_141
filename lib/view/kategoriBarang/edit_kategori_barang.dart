@@ -10,9 +10,9 @@ import 'kategori_barang.dart';
 
 class EditKategoriBarang extends StatefulWidget {
   final int? id;
-  final String? oldname;
+  final String? prevname;
 
-  const EditKategoriBarang({super.key, this.id, this.oldname});
+  const EditKategoriBarang({super.key, this.id, this.prevname});
 
   @override
   State<EditKategoriBarang> createState() => _EditKategoriBarangState();
@@ -42,7 +42,7 @@ class _EditKategoriBarangState extends State<EditKategoriBarang> {
               onChanged: (value) {
                 nama = value;
               },
-              initialValue: widget.oldname,
+              initialValue: widget.prevname,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Nama Kategori is required';
@@ -63,11 +63,11 @@ class _EditKategoriBarangState extends State<EditKategoriBarang> {
                           builder: (context) => const KategoriBarang()));
 
                   var snackBar =
-                      SnackBar(content: Text('Data Berhasil Diubah'));
+                      SnackBar(content: Text('Data Updated Successfully'));
                   ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 }
               },
-              child: const Text('Simpan'),
+              child: const Text('Save'),
             ),
           ],
         ),

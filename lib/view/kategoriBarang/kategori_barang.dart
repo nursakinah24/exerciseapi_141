@@ -58,7 +58,7 @@ class _KategoriBarangState extends State<KategoriBarang> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) => EditKategoriBarang(
-                                            oldname:
+                                            prevname:
                                                 listKategoriBarang[index].nama,
                                             id: listKategoriBarang[index].id,
                                           )));
@@ -72,7 +72,7 @@ class _KategoriBarangState extends State<KategoriBarang> {
 
                               ScaffoldMessenger.of(context).showSnackBar(
                                   SnackBar(
-                                      content: Text('Data Berhasil Dihapus')));
+                                      content: Text('Data Deleted Successfully')));
                             });
                           },
                           icon: const Icon(Icons.delete),

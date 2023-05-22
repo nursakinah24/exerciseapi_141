@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import '../model/kategori_barang_model.dart';
 import 'package:http/http.dart' as http;
 
@@ -12,13 +11,13 @@ class BarangController {
     if (result.statusCode == 200) {
       var data = json.decode(result.body);
       List<KategoriBarangModel> kategoriBarang = [];
-      for (var datas in data) {
-        KategoriBarangModel kategori = KategoriBarangModel.fromMap(datas);
+      for (var i in data) {
+        KategoriBarangModel kategori = KategoriBarangModel.fromMap(i);
         kategoriBarang.add(kategori);
       }
       return kategoriBarang;
     } else {
-      throw Exception('Gagal mengambil data kategori barang');
+      throw Exception('Failed to fetch category!');
     }
   }
 
@@ -29,7 +28,7 @@ class BarangController {
     if (result.statusCode == 200) {
       return json.decode(result.body);
     } else {
-      throw Exception('Gagal menambahkan data kategori barang');
+      throw Exception('Failed to add data!');
     }
   }
 
@@ -40,7 +39,7 @@ class BarangController {
     if (result.statusCode == 200) {
       return json.decode(result.body);
     } else {
-      throw Exception('Gagal mengubah data kategori barang');
+      throw Exception('Failed to update data!');
     }
   }
 
@@ -50,7 +49,7 @@ class BarangController {
     if (result.statusCode == 200) {
       return json.decode(result.body);
     } else {
-      throw Exception('Gagal menhapus data kategori barang');
+      throw Exception('Failed to delete data!');
     }
   }
 }
